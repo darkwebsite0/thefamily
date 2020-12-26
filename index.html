@@ -1,0 +1,453 @@
+<?php require_once "./login/controlleruserdata.php"; ?>
+<?php
+    $email = $_SESSION['email'];
+    $password = $_SESSION['password'];
+    if($email != false && $password != false){
+        $sql = "SELECT * FROM userinfo WHERE email = '$email'";
+        $run_Sql = mysqli_query($con, $sql);
+        if($run_Sql){
+            $fetch_info = mysqli_fetch_assoc($run_Sql);
+            $status = $fetch_info['status'];
+            $code = $fetch_info['code'];
+            if($status == "verified"){
+                if($code != 0){
+                    header('Location: reset-code.php');
+                }
+            }else {
+                header('Location: user-otp.php');
+            }
+        }
+    }else{
+        header('Location: login-user.php');
+    }
+?>
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>The Family</title>
+
+        <!--------------Font Awsome-------------->
+        <link rel="stylesheet" href="./css/all.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Anaheim&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+        <!-- googlefont -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Anaheim&display=swap" rel="stylesheet">
+
+        <!-----Custom Stylesheet----->
+        <link rel="stylesheet" href="./css/style.css">
+
+    </head>
+
+    <body>
+
+        <!-----------Navigation Bar-------->
+        <nav>
+            <div class="menu-icon">
+                <span class="fas fa-bars"></span>
+            </div>
+            <div class="logo">The Family</div>
+            <div class="nav-items">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about-us/about.html">About</a></li>
+                <li><a href="./contact-us/contact.html">Contact</a></li>
+                <li><a href="./feedback/feedback.html">Feedback</a></li>
+                <li><a href="./login/login-user.php">Logout</a></li>
+                <div class="envelope">
+                    <li><a href="#"><span class="far fa-envelope"></span></a></li>
+                </div>
+
+            </div>
+            <div class="search-icon">
+                <span class="fas fa-search"></span>
+            </div>
+            <div class="cancel-icon">
+                <span class="fas fa-times"></span>
+            </div>
+        </nav>
+
+        <!----x-----Navigation Bar----x--->
+
+        <!------------Main Site--------->
+        <section>
+            <div class="container">
+                <h1 class="heading">Family members</h1>
+                <div class="card-wrapper">
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/hiteshbhai.png" alt="profile image" class="profile-img">
+                        <h1>Dr.Hitesh Patel</h1>
+                        <p class="job-title">Doctor(M.B.B.S)</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background-2.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/jalpabhabhi.png" alt="profile image" class="profile-img">
+                        <h1>Dr.Japla Patel</h1>
+                        <p class="job-title">Doctor(physiotherapist)</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background-2.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/jignasha.png" alt="profile image" class="profile-img">
+                        <h1>Jignasha Amin</h1>
+                        <p class="job-title">User Interface Designer</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/niravjiju.png" alt="profile image" class="profile-img">
+                        <h1>Nirav Amin</h1>
+                        <p class="job-title">Salesforce Administrator</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/bhaveshbhai.png" alt="profile image" class="profile-img">
+                        <h1>Bhavesh Patel</h1>
+                        <p class="job-title">Mechanical Engineer</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background-2.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/palak.png" alt="profile image" class="profile-img">
+                        <h1>Palak Patel</h1>
+                        <p class="job-title">Accounting Manager</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/ronakjiju.png" alt="profile image" class="profile-img">
+                        <h1>Ronak Patel</h1>
+                        <p class="job-title">IT Professional</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/bhavik.png" alt="profile image" class="profile-img">
+                        <h1>Bhavik Patel</h1>
+                        <p class="job-title">Manager</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/lav.png" alt="profile image" class="profile-img">
+                        <h1>Lav Patel</h1>
+                        <p class="job-title">Mechanical Design Engineer</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background-2.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/zalak.png" alt="profile image" class="profile-img">
+                        <h1>Zalak Patel</h1>
+                        <p class="job-title">Personal Care Worker</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/ankitjiju.png" alt="profile image" class="profile-img">
+                        <h1>Ankit Patel</h1>
+                        <p class="job-title">Dominos Shift Runner</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/parth.png" alt="profile image" class="profile-img">
+                        <h1>Parth Patel</h1>
+                        <p class="job-title">Computer Engineering Student</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/smit.png" alt="profile image" class="profile-img">
+                        <h1>Smit Patel</h1>
+                        <p class="job-title">Automobile Engineering Student</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/pinaksh.png" alt="profile image" class="profile-img">
+                        <h1>Pinaksh Patel</h1>
+                        <p class="job-title">Student</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/mahin.png" alt="profile image" class="profile-img">
+                        <h1>Mahin Amin</h1>
+                        <p class="job-title">Student</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/namay.jpeg" alt="profile image" class="profile-img">
+                        <h1>Namay Amin</h1>
+                        <p class="job-title">None</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <img src="./assets/card-background.jpg" alt="card background" class="card-img">
+                        <img src="./assets/members/Nilaksh.jpeg" alt="profile image" class="profile-img">
+                        <h1>Nilaksh Patel</h1>
+                        <p class="job-title">None</p>
+                        <p class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti corrupti perspiciatis!
+                        </p>
+                        <a href="#" class="btn">Details</a>
+                        <ul class="social-media">
+                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!----x-------Main Site----x---->
+
+        <!-- -------Footer------------ -->
+        <footer>
+          <div class="main-content">
+            <div class="left box">
+              <h2>About us</h2>
+              <div class="content">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus est vitae illum delectus distinctio, reiciendis, id natus magnam quae harum necessitatibus ex provident maiores neque libero maxime, sit rem ut?<p>
+                <div class="social">
+                  <a href="https://www.facebook.com/profile.php?id=100010639487502"><span class="fab fa-facebook-f"></span></a>
+                  <a href="#"><span class="fab fa-twitter"></span><a>
+                  <a href="https://www.instagram.com/blacking007__/?hl=en"><span class="fab fa-instagram"></span></a>
+                  <a href="https://www.youtube.com/channel/UCZ7LkK_J7wfRn7a94WVbcEA/featured?view_as=subscriber"><span class="fab fa-youtube"></span></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="center box">
+              <h2>Address</h2>
+              <div class="content">
+                <div class="place">
+                  <span class="fas fa-map-marker-alt"></span>
+                  <span class="text">Mehsana, Gujrat, India.</span>
+                </div>
+                <div class="phone">
+                  <span class="fas fa-phone-alt"></span>
+                  <span class="text">+91 7229001216</span>
+                </div>
+                <div class="email">
+                  <span class="fas fa-envelope"></span>
+                  <span class="text">patelparth2282001@gmail.com
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="right box">
+              <h2>Contact us</h2>
+              <div class="content">
+                <form action="#">
+                  <div class="email">
+                    <div class="text">Email *</div>
+                    <input type="email" required>
+                  </div>
+                  <div class="msg">
+                    <div class="text">Message *</div>
+                    <textarea rows="2" cols="25" required></textarea>
+                  </div>
+                  <div class="btn">
+                    <button type="submit">Send</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="bottom">
+            <center>
+              <span class="credit">Created By <a href="https://youtube.com/c/codingnepal">Parth patel</a> | </span>
+              <span class="far fa-copyright"></span><span> 2020 All rights reserved.</span>
+            </center>
+          </div>
+        </footer>
+
+        <!-- -------x-----Footer----x----- -->
+
+
+        <!--Jquery Library File-->
+        <script src="./js/jquery3.5.1.main.js"></script>
+
+        <!---------Custom Font Js------>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+        <!----------Custom Js----------->
+        <script src="./js/main.js"></script>
+
+    </body>
+</html>
